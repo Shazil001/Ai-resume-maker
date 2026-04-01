@@ -61,8 +61,8 @@ export default function Builder({ onNavigate, user, initialData, resumeId }) {
         setIsGenerating(true);
         try {
             const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
-            if (!apiKey) {
-                alert('Please provide VITE_GEMINI_API_KEY in your .env file.');
+            if (!apiKey || apiKey === 'your_gemini_api_key') {
+                alert('Please provide your actual VITE_GEMINI_API_KEY in your .env file.');
                 setIsGenerating(false);
                 return;
             }
