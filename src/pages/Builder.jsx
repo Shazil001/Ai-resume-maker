@@ -66,8 +66,9 @@ export default function Builder({ onNavigate, user, initialData, resumeId }) {
                 setIsGenerating(false);
                 return;
             }
+            // Google sometimes returns 404 for gemini-1.5-flash on certain API keys, so use latest or fallback
             const genAI = new GoogleGenerativeAI(apiKey);
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
             
             const prompt = `
             You are an expert professional resume writer. Given the following raw resume data in JSON format, rewrite the content professionally. 
